@@ -1102,12 +1102,13 @@ animation: animateWave_02 3s linear infinite;
 }
 
 
+
 .video-description {
   font-size: 1em;
   line-height: 1.6;
   color: #cfd8dc;
   margin-bottom: 25px;
-  text-align: justify;
+  text-align: justify !important;
 }
 
 
