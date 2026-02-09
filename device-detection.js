@@ -385,6 +385,13 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('🎮 Device detection initialized');
   console.log('📦 Google Drive Link:', GOOGLE_DRIVE_LINK);
   
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('action') === 'install') {
+    console.log('🚀 Auto-triggering installation flow from QR code');
+    const deviceInfo = detectDevice();
+    showDevicePopup(deviceInfo);
+  }
+  
   // Get the install button (try multiple selectors)
   const installBtn = document.getElementById('download-btn') || 
                      document.getElementById('install-btn') ||

@@ -446,7 +446,10 @@
     // ============================================
     // CONFIGURATION - UPDATE THIS LINK
     // ============================================
-    const GOOGLE_DRIVE_LINK = 'https://drive.google.com/drive/folders/1lZLI30QeExp-tq166q50ZQWte7b0mSQ4?usp=sharing';
+   // const GOOGLE_DRIVE_LINK = 'https://drive.google.com/drive/folders/1lZLI30QeExp-tq166q50ZQWte7b0mSQ4?usp=sharing';
+    const WEBSITE_INSTALL_LINK = 'https://katipudroidcapstone.netlify.app/?action=install'; 
+    
+    const DRIVE_LINK = 'https://drive.google.com/drive/folders/1lZLI30QeExp-tq166q50ZQWte7b0mSQ4?usp=sharing';
     // Replace YOUR_FOLDER_ID_HERE with your actual Google Drive folder ID
     // ============================================
 
@@ -454,12 +457,12 @@
     window.addEventListener('load', function() {
       // Update the drive link
       const driveLinkElement = document.getElementById('drive-link');
-      driveLinkElement.href = GOOGLE_DRIVE_LINK;
-      driveLinkElement.textContent = GOOGLE_DRIVE_LINK;
+      driveLinkElement.href = DRIVE_LINK;
+      driveLinkElement.textContent = DRIVE_LINK;
 
       // Generate QR code
       new QRCode(document.getElementById('qrcode'), {
-        text: GOOGLE_DRIVE_LINK,
+        text: WEBSITE_INSTALL_LINK,
         width: 220,
         height: 220,
         colorDark: "#000000",
