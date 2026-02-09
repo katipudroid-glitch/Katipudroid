@@ -1,6 +1,9 @@
 /* Device Detection Popup Styles */
+/* Updated for Google Drive installation flow with QR code */
 
-/* Popup Overlay */
+/* ============================================
+   POPUP OVERLAY
+   ============================================ */
 .device-popup-overlay {
   display: none;
   position: fixed;
@@ -8,20 +11,23 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
   z-index: 9999;
   backdrop-filter: blur(10px);
   animation: fadeIn 0.3s ease;
+  overflow-y: auto;
+  padding: 20px;
 }
 
 .device-popup-overlay.show {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 20px;
 }
 
-/* Popup Container */
+/* ============================================
+   POPUP CONTAINER
+   ============================================ */
 .device-popup {
   background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
   border: 3px solid #ff4655;
@@ -33,9 +39,18 @@
   box-shadow: 0 20px 60px rgba(255, 70, 85, 0.4);
   animation: slideUp 0.4s ease;
   position: relative;
+  margin: 20px auto;
 }
 
-/* Popup Icon */
+.device-popup-large {
+  max-width: 650px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* ============================================
+   POPUP ICON
+   ============================================ */
 .popup-icon {
   font-size: 4rem;
   margin-bottom: 20px;
@@ -50,15 +65,20 @@
   color: #00ff00;
 }
 
-/* Popup Title */
+/* ============================================
+   POPUP TITLE & MESSAGE
+   ============================================ */
 .popup-title {
   color: #ff4655;
   font-size: 1.8rem;
   margin-bottom: 15px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
-/* Popup Message */
 .popup-message {
   color: #ccc;
   font-size: 1.1rem;
@@ -66,7 +86,9 @@
   margin-bottom: 25px;
 }
 
-/* Device Info Box */
+/* ============================================
+   DEVICE INFO BOX
+   ============================================ */
 .device-info {
   background: rgba(255, 70, 85, 0.1);
   border: 1px solid rgba(255, 70, 85, 0.3);
@@ -77,15 +99,297 @@
 
 .device-info p {
   color: #ccc;
-  margin: 5px 0;
-  font-size: 0.9rem;
+  margin: 8px 0;
+  font-size: 1rem;
 }
 
 .device-info strong {
   color: #ff4655;
 }
 
-/* Popup Buttons */
+.status-not-compatible {
+  color: #ff4655;
+  font-weight: bold;
+}
+
+/* ============================================
+   QR CODE SECTION
+   ============================================ */
+.qr-section {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 2px solid rgba(255, 70, 85, 0.3);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 25px 0;
+}
+
+.qr-section h3,
+.qr-section h4 {
+  color: #ff4655;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.qr-container {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  display: inline-block;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.qr-container-small {
+  padding: 10px;
+}
+
+.qr-container-small #qrcode {
+  width: 150px !important;
+  height: 150px !important;
+}
+
+.qr-container-small #qrcode img,
+.qr-container-small #qrcode canvas {
+  width: 150px !important;
+  height: 150px !important;
+}
+
+.qr-hint {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 12px;
+  font-style: italic;
+}
+
+.qr-section-small {
+  padding: 20px;
+  margin: 20px 0;
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 25px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 70, 85, 0.5), transparent);
+}
+
+.divider span {
+  padding: 0 20px;
+  color: #888;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ============================================
+   DIRECT LINK SECTION
+   ============================================ */
+.direct-link-section {
+  margin: 20px 0;
+}
+
+/* ============================================
+   INSTALLATION INSTRUCTIONS
+   ============================================ */
+.install-instructions {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 25px 0;
+  text-align: left;
+}
+
+.install-instructions h3 {
+  color: #ff4655;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.install-instructions ol {
+  list-style: none;
+  counter-reset: step-counter;
+  padding: 0;
+  margin: 0;
+}
+
+.install-instructions li {
+  counter-increment: step-counter;
+  position: relative;
+  padding: 15px 15px 15px 55px;
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  border-left: 3px solid #ff4655;
+  transition: all 0.3s ease;
+}
+
+.install-instructions li:hover {
+  background: rgba(255, 70, 85, 0.1);
+  transform: translateX(5px);
+}
+
+.install-instructions li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(45deg, #ff4655, #ff6b7a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.install-instructions li strong {
+  color: #ff4655;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.install-instructions li span {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.install-instructions li small {
+  color: #888;
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 5px;
+}
+
+.install-instructions code {
+  background: rgba(255, 70, 85, 0.2);
+  color: #ff6b7a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.install-instructions em {
+  color: #aaa;
+}
+
+/* ============================================
+   INSTALL WARNING
+   ============================================ */
+.install-warning {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.1));
+  border: 1px solid rgba(255, 193, 7, 0.4);
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.install-warning i {
+  color: #ffc107;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.install-warning span {
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.install-warning strong {
+  color: #ffc107;
+}
+
+/* ============================================
+   ALTERNATIVE SECTION (for non-Android)
+   ============================================ */
+.alternative-section {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 25px;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.alternative-section h3 {
+  color: #ff4655;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alternative-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.alternative-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.alternative-list li:hover {
+  background: rgba(255, 70, 85, 0.1);
+}
+
+.alternative-list li i {
+  color: #ff4655;
+  font-size: 1.2rem;
+  width: 30px;
+  text-align: center;
+}
+
+.alternative-list li span {
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.alternative-list li strong {
+  color: #ff4655;
+}
+
+/* ============================================
+   POPUP BUTTONS
+   ============================================ */
 .popup-buttons {
   display: flex;
   gap: 15px;
@@ -95,7 +399,7 @@
 }
 
 .popup-btn {
-  padding: 12px 30px;
+  padding: 12px 25px;
   border: none;
   border-radius: 10px;
   font-size: 1rem;
@@ -104,17 +408,28 @@
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  text-decoration: none;
+}
+
+.popup-btn-large {
+  padding: 15px 35px;
+  font-size: 1.1rem;
+  width: 100%;
+  max-width: 300px;
 }
 
 .popup-btn-primary {
   background: linear-gradient(45deg, #ff4655, #ff6b7a);
   color: white;
+  box-shadow: 0 4px 15px rgba(255, 70, 85, 0.3);
 }
 
 .popup-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 70, 85, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 70, 85, 0.5);
+  color: white;
 }
 
 .popup-btn-secondary {
@@ -128,7 +443,9 @@
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Close Button (X) */
+/* ============================================
+   CLOSE BUTTON (X)
+   ============================================ */
 .popup-close {
   position: absolute;
   top: 15px;
@@ -138,13 +455,14 @@
   color: #ccc;
   font-size: 1.5rem;
   cursor: pointer;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+  z-index: 10;
 }
 
 .popup-close:hover {
@@ -153,7 +471,34 @@
   transform: rotate(90deg);
 }
 
-/* Animations */
+/* ============================================
+   TOAST NOTIFICATION
+   ============================================ */
+.toast-notification {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: 2px solid #ff4655;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10001;
+  font-size: 1rem;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.toast-notification.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -175,10 +520,42 @@
   50% { transform: translateY(-10px); }
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+.device-popup-large::-webkit-scrollbar {
+  width: 8px;
+}
+
+.device-popup-large::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.device-popup-large::-webkit-scrollbar-thumb {
+  background: rgba(255, 70, 85, 0.5);
+  border-radius: 4px;
+}
+
+.device-popup-large::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 70, 85, 0.7);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+  .device-popup-overlay {
+    padding: 10px;
+  }
+
   .device-popup {
     padding: 30px 20px;
+    margin: 10px;
+  }
+  
+  .device-popup-large {
+    max-height: none;
   }
   
   .popup-icon {
@@ -186,7 +563,9 @@
   }
   
   .popup-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    flex-direction: column;
+    gap: 5px;
   }
   
   .popup-message {
@@ -195,9 +574,72 @@
   
   .popup-buttons {
     flex-direction: column;
+    gap: 10px;
   }
   
   .popup-btn {
     width: 100%;
+  }
+
+  .popup-btn-large {
+    max-width: 100%;
+  }
+
+  .qr-section {
+    padding: 20px;
+  }
+
+  .install-instructions {
+    padding: 20px 15px;
+  }
+
+  .install-instructions li {
+    padding: 12px 12px 12px 50px;
+  }
+
+  .install-instructions li::before {
+    left: 10px;
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem;
+  }
+
+  .install-warning {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-title {
+    font-size: 1.2rem;
+  }
+
+  .qr-container {
+    padding: 10px;
+  }
+
+  #qrcode {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  #qrcode img,
+  #qrcode canvas {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
+  .install-instructions li {
+    padding-left: 45px;
+  }
+
+  .install-instructions li strong {
+    font-size: 0.95rem;
+  }
+
+  .install-instructions li span {
+    font-size: 0.9rem;
   }
 }

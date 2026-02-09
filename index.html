@@ -42,7 +42,7 @@
   <section id="about">
     <h2>About the Game</h2>
     <p>KATIPUDROID is a 3D story-driven role-playing game that brings the heroism of the Katipunan to life. Step into the shoes of Macario Sakay, a barber, actor, and brave Katipunero who fights for freedom during the Spanish colonization of the Philippines.</p>
-    <p>Experience the struggles, sacrifices, and victories of Filipino revolutionaries through immersive missions, historical battles, and interactive storytelling. Explore 3D environments, fight Spanish forces, uncover secrets, and relive key moments that shaped the nation’s history.</p>
+    <p>Experience the struggles, sacrifices, and victories of Filipino revolutionaries through immersive missions, historical battles, and interactive storytelling. Explore 3D environments, fight Spanish forces, uncover secrets, and relive key moments that shaped the nation's history.</p>
     <p>Developed for Android, KATIPUDROID blends education and adventure, making Philippine history come alive through gameplay. Learn about the Katipunan, the rise of nationalism, and the fight for independence</p>
   </section><!--about-->
   <section id="about">
@@ -70,7 +70,7 @@ The game unfolds across four thrilling chapters, each packed with three missions
       <div class="flag-wrapper">
         <span class="flag" style="color: black;">Chapter 2</span>
       </div>
-      <div class="desc">Macario officially joins the Katipunan, smuggles weapons, and faces betrayal as the revolution’s first sparks begin to ignite.</div>
+      <div class="desc">Macario officially joins the Katipunan, smuggles weapons, and faces betrayal as the revolution's first sparks begin to ignite.</div>
     </div>
   </li>
 
@@ -92,7 +92,7 @@ The game unfolds across four thrilling chapters, each packed with three missions
       <div class="flag-wrapper">
         <span class="flag" style="color: black;">Chapter 4</span>
       </div>
-      <div class="desc">As division tears the Katipunan apart, Macario witnesses Bonifacio’s fall and fights his last battle for freedom at Biak-na-Bato.</div>
+      <div class="desc">As division tears the Katipunan apart, Macario witnesses Bonifacio's fall and fights his last battle for freedom at Biak-na-Bato.</div>
     </div>
   </li>
  
@@ -107,10 +107,13 @@ The game unfolds across four thrilling chapters, each packed with three missions
       Fight for freedom as Macario Sakay, a brave Katipunero rising against Spanish rule.
       Experience four chapters of action-filled missions, from surviving oppression in Tondo
       to leading revolutionaries in the Battle of San Juan del Monte. Outsmart the Guardia Civil,
-      uncover the Katipunan’s secrets, and relive the nation’s fight for independence through
+      uncover the Katipunan's secrets, and relive the nation's fight for independence through
       immersive 3D gameplay — only on Android.
     </p>
-    <a href="katipudroid.apk" class="learn-btn">INSTALL THE GAME</a>
+    <!-- Updated Install Button - No direct download, uses device detection -->
+    <button type="button" class="learn-btn" id="install-btn">
+      <i class="fas fa-download"></i> INSTALL THE GAME
+    </button>
   </div>
 
 
@@ -283,6 +286,9 @@ The game unfolds across four thrilling chapters, each packed with three missions
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
+<!-- QRCode.js for generating QR codes -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <!-- EmailJS for sending OTP emails -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
@@ -294,8 +300,10 @@ The game unfolds across four thrilling chapters, each packed with three missions
 <!-- Firebase Configuration - MUST be loaded first -->
 <script src="src/config/firebase-config.js" type="module"></script>
 
+<!-- Device Detection (for install button) - Load before main JS -->
+<script src="device-detection.js"></script>
+
 <!-- Main JavaScript -->
 <script src="index.js"></script>
-<script src="device-detection.js"></script>
 </body>
 </html>
