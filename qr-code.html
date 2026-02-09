@@ -447,22 +447,23 @@
     // CONFIGURATION - UPDATE THIS LINK
     // ============================================
    // const GOOGLE_DRIVE_LINK = 'https://drive.google.com/drive/folders/1lZLI30QeExp-tq166q50ZQWte7b0mSQ4?usp=sharing';
-    const WEBSITE_INSTALL_LINK = 'https://katipudroidhub.netlify.app/?action=install'; 
+    const WEBSITE_LINK = 'https://katipudroidhub.netlify.app/'; 
     
-    const DRIVE_LINK = 'https://drive.google.com/drive/folders/1lZLI30QeExp-tq166q50ZQWte7b0mSQ4?usp=sharing';
+    const GOOGLE_DRIVE_LINK = 'https://drive.google.com/drive/folders/1lZLI30QeExp-tq166q50ZQWte7b0mSQ4?usp=sharing';
     // Replace YOUR_FOLDER_ID_HERE with your actual Google Drive folder ID
     // ============================================
 
     // Initialize on page load
     window.addEventListener('load', function() {
-      // Update the drive link
+      // Update the "Direct Link" text to still show the drive link if you want, 
+      // or change it to the website link.
       const driveLinkElement = document.getElementById('drive-link');
-      driveLinkElement.href = DRIVE_LINK;
-      driveLinkElement.textContent = DRIVE_LINK;
+      driveLinkElement.href = WEBSITE_LINK; 
+      driveLinkElement.textContent = WEBSITE_LINK;
 
-      // Generate QR code
+      // Generate QR code pointing to the WEBSITE
       new QRCode(document.getElementById('qrcode'), {
-        text: WEBSITE_INSTALL_LINK,
+        text: WEBSITE_LINK, // <--- CHANGED THIS
         width: 220,
         height: 220,
         colorDark: "#000000",

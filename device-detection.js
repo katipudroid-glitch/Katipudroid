@@ -381,35 +381,44 @@ function handleDownloadClick(event) {
 }
 
 // Initialize when page loads
+// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
   console.log('🎮 Device detection initialized');
-  console.log('📦 Google Drive Link:', GOOGLE_DRIVE_LINK);
   
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('action') === 'install') {
-    console.log('🚀 Auto-triggering installation flow from QR code');
-    const deviceInfo = detectDevice();
-    showDevicePopup(deviceInfo);
-  }
-  
-  // Get the install button (try multiple selectors)
-  const installBtn = document.getElementById('download-btn') || 
-                     document.getElementById('install-btn') ||
-                     document.querySelector('.learn-btn') ||
-                     document.querySelector('a[href*="katipudroid.apk"]');
+  // 1. Find the install button
+  const installBtn = document.getElementById('install-btn') || 
+                     document.querySelector('.learn-btn');
   
   if (installBtn) {
-    // Remove any existing href to prevent direct download
-    if (installBtn.hasAttribute('href')) {
-      installBtn.removeAttribute('href');
-      installBtn.style.cursor = 'pointer';
-    }
+    // 2. Check the device immediately
+    const deviceInfo = detectDevice();
     
-    // Add click event listener
-    installBtn.addEventListener('click', handleDownloadClick);
-    console.log('✅ Install button listener added');
-  } else {
-    console.log('ℹ️ Install button not found on this page');
+    if (!deviceInfo.isAndroid) {
+      // CASE: iOS, Windows, Mac, etc. -> DISABLE BUTTON
+      console.log('🚫 Non-Android device detected. Disabling button.');
+      
+      // Visual changes
+      installBtn.style.opacity = '0.5';
+      installBtn.style.cursor = 'not-allowed';
+      installBtn.style.filter = 'grayscale(100%)';
+      installBtn.innerHTML = '<i class="fas fa-ban"></i> ANDROID ONLY';
+      
+      // Functional changes
+      installBtn.disabled = true; // Disable <button> clicks
+      installBtn.removeAttribute('href'); // Remove links for <a> tags
+      installBtn.onclick = function(e) { e.preventDefault(); return false; }; // Block clicks
+      
+    } else {
+      // CASE: Android -> ENABLE BUTTON
+      console.log('✅ Android device detected. Enabling install flow.');
+      
+      // Make sure it looks clickable
+      installBtn.style.cursor = 'pointer';
+      installBtn.removeAttribute('disabled');
+      
+      // Add the click listener to show the specific download instructions
+      installBtn.addEventListener('click', handleDownloadClick);
+    }
   }
 });
 
