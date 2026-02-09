@@ -122,7 +122,6 @@ function createAndroidPopup(deviceInfo) {
           ${deviceInfo.message}
         </p>
         
-        <!-- QR Code Section -->
         <div class="qr-section">
           <h3><i class="fas fa-qrcode"></i> Scan QR Code to Download</h3>
           <div class="qr-container" id="qrcode-container">
@@ -131,12 +130,10 @@ function createAndroidPopup(deviceInfo) {
           <p class="qr-hint">Point your camera at this QR code</p>
         </div>
         
-        <!-- OR Divider -->
         <div class="divider">
           <span>OR</span>
         </div>
         
-        <!-- Direct Link -->
         <div class="direct-link-section">
           <a href="${GOOGLE_DRIVE_LINK}" target="_blank" class="popup-btn popup-btn-primary popup-btn-large">
             <i class="fab fa-google-drive"></i>
@@ -144,35 +141,43 @@ function createAndroidPopup(deviceInfo) {
           </a>
         </div>
         
-        <!-- Installation Instructions -->
         <div class="install-instructions">
           <h3><i class="fas fa-list-ol"></i> Installation Steps</h3>
           <ol>
             <li>
-              <strong>Download Files:</strong>
-              <span>Download both the <code>katipudroid.apk</code> and <code>main.obb</code> files from Google Drive</span>
+              <strong>Step 1:</strong>
+              <span>Have the necessary files: Android phone, APK file, and OBB file.</span>
             </li>
             <li>
-              <strong>Enable Unknown Sources:</strong>
-              <span>Go to <em>Settings → Security → Install Unknown Apps</em> and enable for your browser/file manager</span>
+              <strong>Step 2:</strong>
+              <span>Install the APK file first.</span>
             </li>
             <li>
-              <strong>Install APK:</strong>
-              <span>Open the downloaded <code>.apk</code> file and tap <em>Install</em></span>
+              <strong>Step 3:</strong>
+              <span>Open the app once the installation is done (to create the folders).</span>
             </li>
             <li>
-              <strong>Copy OBB File:</strong>
-              <span>Copy <code>main.obb</code> to <code>Android/obb/com.katipudroid.game/</code></span>
-              <br><small>(Create the folder if it doesn't exist)</small>
+              <strong>Step 4:</strong>
+              <span>Close the game completely and ensure it’s not running in the background.</span>
             </li>
             <li>
-              <strong>Launch Game:</strong>
-              <span>Open KATIPUDROID from your app drawer and enjoy!</span>
+              <strong>Step 5:</strong>
+              <span>Locate the Android folder in your file manager and go to this path:<br>
+              <code>/Android/obb/com.GA4Company.Katipudroid/</code><br>
+              Paste the OBB file inside that folder.</span>
+            </li>
+            <li>
+              <strong>Step 6:</strong>
+              <span>After moving the file, make sure the OBB name is exactly:<br>
+              <code>main.1.com.GA4Company.Katipudroid.obb</code></span>
+            </li>
+            <li>
+              <strong>Step 7:</strong>
+              <span>Play the game!</span>
             </li>
           </ol>
         </div>
         
-        <!-- Warning -->
         <div class="install-warning">
           <i class="fas fa-exclamation-triangle"></i>
           <span>The game requires approximately <strong>2GB</strong> of storage space. Make sure you have enough free space before downloading.</span>
