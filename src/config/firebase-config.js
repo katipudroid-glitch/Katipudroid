@@ -209,10 +209,12 @@ window.sendOTPEmail = async function(email, name, otp) {
     });
     
     // Your actual EmailJS credentials
-    const SERVICE_ID = 'service_802oicm';      // Your actual service ID
+    const SERVICE_ID = 'service_o3oy6br';      // Your actual service ID
     const TEMPLATE_ID = 'template_qe8a1wo';    // Your actual template ID
     const PUBLIC_KEY = 'ym7yxfFUGxy4FAGDw';   // Your actual public key
     
+    // service_o3oy6br
+
     // Check if credentials are still placeholder values
     if (SERVICE_ID === 'YOUR_SERVICE_ID' || TEMPLATE_ID === 'YOUR_TEMPLATE_ID' || PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
       throw new Error('Please update EmailJS credentials in firebase-config.js');
