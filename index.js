@@ -379,6 +379,22 @@ async function loadFeedbacks() {
         
         const stars = createStarDisplay(feedback.rating || 5);
         
+        const maxLength = 150;
+        let messageHtml = `<p>${escapeHtml(feedback.message)}</p>`;
+        
+        if (feedback.message.length > maxLength) {
+          const truncatedMsg = escapeHtml(feedback.message.substring(0, maxLength)) + '...';
+          const fullMsg = escapeHtml(feedback.message);
+          
+          messageHtml = `
+            <p class="feedback-message-container">
+              <span class="short-msg">${truncatedMsg}</span>
+              <span class="full-msg" style="display: none;">${fullMsg}</span>
+              <button onclick="toggleMessage(this)" class="see-more-btn" style="background: none; border: none; color: #ff4655; cursor: pointer; padding: 5px 0 0 0; font-size: 0.9rem; font-weight: bold; display: block; margin-top: 5px;">See more</button>
+            </p>
+          `;
+        }
+
         card.innerHTML = `
           <div class="feedback-rating">
             <div class="feedback-stars">${stars}</div>
@@ -387,7 +403,7 @@ async function loadFeedbacks() {
           <h4>${escapeHtml(feedback.name)} 
             <small style="color: #999; font-size: 0.8em;">(${formattedDate})</small>
           </h4>
-          <p>${escapeHtml(feedback.message)}</p>
+          ${messageHtml}
         `;
         
         card.style.opacity = '0';
@@ -890,3 +906,19 @@ window.addEventListener('beforeunload', () => {
     clearInterval(otpTimer);
   }
 });
+
+window.toggleMessage = function(btn) {
+  const container = btn.parentElement;
+  const shortMsg = container.querySelector('.short-msg');
+  const fullMsg = container.querySelector('.full-msg');
+  
+  if (fullMsg.style.display === 'none') {
+    shortMsg.style.display = 'none';
+    fullMsg.style.display = 'inline';
+    btn.textContent = 'See less';
+  } else {
+    shortMsg.style.display = 'inline';
+    fullMsg.style.display = 'none';
+    btn.textContent = 'See more';
+  }
+};

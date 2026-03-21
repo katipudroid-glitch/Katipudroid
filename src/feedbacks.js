@@ -276,6 +276,22 @@ function createFeedbackCard(feedback) {
   const rating = feedback.rating || 5;
   const stars = createStarDisplay(rating);
   
+  const maxLength = 150;
+  let messageHtml = `<div class="feedback-message">${escapeHtml(feedback.message)}</div>`;
+  
+  if (feedback.message.length > maxLength) {
+    const truncatedMsg = escapeHtml(feedback.message.substring(0, maxLength)) + '...';
+    const fullMsg = escapeHtml(feedback.message);
+    
+    messageHtml = `
+      <div class="feedback-message">
+        <span class="short-msg">${truncatedMsg}</span>
+        <span class="full-msg" style="display: none;">${fullMsg}</span>
+        <button onclick="toggleMessage(this)" class="see-more-btn" style="background: none; border: none; color: #ff4655; cursor: pointer; padding: 5px 0 0 0; font-size: 0.9rem; font-weight: bold; display: block; margin-top: 5px;">See more</button>
+      </div>
+    `;
+  }
+  
   return `
     <div class="feedback-card-enhanced">
       <div class="feedback-header">
@@ -294,10 +310,7 @@ function createFeedbackCard(feedback) {
         <div class="feedback-stars">${stars}</div>
         <span class="rating-text">${rating}/5</span>
       </div>
-      <div class="feedback-message">
-        ${escapeHtml(feedback.message)}
-      </div>
-    
+      ${messageHtml}
     </div>
   `;
 }
@@ -466,3 +479,19 @@ function escapeHtml(text) {
   };
   return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
+
+window.toggleMessage = function(btn) {
+  const container = btn.parentElement;
+  const shortMsg = container.querySelector('.short-msg');
+  const fullMsg = container.querySelector('.full-msg');
+  
+  if (fullMsg.style.display === 'none') {
+    shortMsg.style.display = 'none';
+    fullMsg.style.display = 'inline';
+    btn.textContent = 'See less';
+  } else {
+    shortMsg.style.display = 'inline';
+    fullMsg.style.display = 'none';
+    btn.textContent = 'See more';
+  }
+};
